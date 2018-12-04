@@ -25,21 +25,21 @@ from obspy import UTCDateTime
 from obspy import Stream
 
 
-cat= genfromtxt("/Users/william/Documents/scanner/all_stations/Explosion_catalogue_v2.csv", delimiter=',',skip_header=1)
+cat= genfromtxt("/Users/william/Documents/scanner/all_stations/Explosion_Catalogue_V3.csv", delimiter=',',skip_header=1)
 
 
 ###########  ADD IN CALIBRATIONS ##############
 
-LB01sc1=0.000001/750            # before 2015-12-05T00:00:01.000000Z  
-
-
-LB01ac = 0.000001/0.0250
-LB02ac = 0.000001/(0.0250*256)
-LB03ac = 0.000001/(0.0250*256)
-LB04ac = 0.000001/(0.0250*256)
-LB05ac = 0.000001/(0.0250*256)
-LB06ac = 0.000001/(0.01*256)
-LS01ac = 0.000001/(0.0250*256)
+#LB01sc1=0.000001/750            # before 2015-12-05T00:00:01.000000Z  
+#
+#
+#LB01ac = 0.000001/0.0250
+#LB02ac = 0.000001/(0.0250*256)
+#LB03ac = 0.000001/(0.0250*256)
+#LB04ac = 0.000001/(0.0250*256)
+#LB05ac = 0.000001/(0.0250*256)
+#LB06ac = 0.000001/(0.01*256)
+#LS01ac = 0.000001/(0.0250*256)
 
 acoustic_stream = Stream()
 #%%
@@ -253,3 +253,4 @@ for x in range(0,len(cat)) :
     except:
         print("")
 
+acoustic_stream.write('/Users/william/Documents/scanner/output_data/EXP_acoustic_stream_v3.mseed', format='MSEED') 

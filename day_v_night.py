@@ -22,18 +22,18 @@ from obspy import UTCDateTime
 
 #%% import data
 
-cat= genfromtxt("/Users/william/Documents/scanner/all_stations/Explosion_catalogue_v2.csv", delimiter=',',skip_header=1)
+cat= genfromtxt("/Users/william/Documents/scanner/all_stations/Explosion_Catalogue_V3.csv", delimiter=',',skip_header=1)
 #%% Events 
-start_day = 1476014400
-d2n = 1476064800
-end_night = 1476100800
+start_day = 1450785600
+d2n = 1450785600+(14*60*60)
+end_night = 1450785600+(24*60*60)
 day_count=0
 night_count=0
 day_n=1
-for x in range(12700,14000):
+for x in range(100,14000):
     tim = UTCDateTime(cat[x,0])
 #    print(tim)
-    if 1476014400 < tim < 1478174400 :
+    if 1450785600 < tim < 1450785600+(25*24*60*60) :
         if start_day < tim < end_night:
             if start_day < tim < d2n:
                 day_count += 1

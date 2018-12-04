@@ -12,7 +12,7 @@ from obspy import Stream
 from numpy import genfromtxt
 import numpy as np
 
-cat= genfromtxt("/Users/william/Documents/scanner/all_stations/Explosion_catalogue_v2.csv", delimiter=',',skip_header=1)
+cat= genfromtxt("/Users/william/Documents/scanner/all_stations/Explosion_Catalogue_V3.csv", delimiter=',',skip_header=1)
 
 
 LB01=cat[:,8]
@@ -44,26 +44,6 @@ T=np.zeros(shape=(len(LB01),1))
 T2=np.zeros(shape=(len(LB01),1))
 for x in range(0,len(LB01)):
     
-    if LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x] > 1:
-        T[x]=5
-    if (LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x] == 1) and (LB06[x] == 1):
-        T[x]=4   
-    if (LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x] == 1) and (LB06[x] == 0) and (LS01[x]+LS02[x]+LS03[x]+LS04[x]+LS05[x]+LS06[x] > 0):
-        T[x]=4
-    if (LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x] == 1) and (LB06[x] == 0) and (LS01[x]+LS02[x]+LS03[x]+LS04[x]+LS05[x]+LS06[x] == 0):
-        T[x]=3
-    if (LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x] == 0) and (LB06[x] == 1) and (LS01[x]+LS02[x]+LS03[x]+LS04[x]+LS05[x]+LS06[x] > 0):
-        T[x]=3    
-    if (LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x] == 0) and (LB06[x] == 1) and (LS01[x]+LS02[x]+LS03[x]+LS04[x]+LS05[x]+LS06[x] == 0):
-        T[x]=2    
-    if (LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x]+LB06[x] == 0) and (LS01[x]+LS02[x]+LS03[x]+LS04[x]+LS05[x]+LS06[x] > 1):
-        T[x]=2    
-    if (LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x]+LB06[x] == 0) and (LS01[x]+LS02[x]+LS03[x]+LS04[x]+LS05[x]+LS06[x] == 1):
-        T[x]=1    
-    
-    
-        
-    
     if LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x]+LB06[x] > 1:
         T2[x]=4
     if (LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x]+LB06[x]) == 1 and (LS01[x]+LS02[x]+LS03[x]+LS04[x]+LS05[x]+LS06[x] > 0):
@@ -77,7 +57,24 @@ for x in range(0,len(LB01)):
     
 
     
-    
+  #    if LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x] > 1:
+#        T[x]=5
+#    if (LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x] == 1) and (LB06[x] == 1):
+#        T[x]=4   
+#    if (LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x] == 1) and (LB06[x] == 0) and (LS01[x]+LS02[x]+LS03[x]+LS04[x]+LS05[x]+LS06[x] > 0):
+#        T[x]=4
+#    if (LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x] == 1) and (LB06[x] == 0) and (LS01[x]+LS02[x]+LS03[x]+LS04[x]+LS05[x]+LS06[x] == 0):
+#        T[x]=3
+#    if (LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x] == 0) and (LB06[x] == 1) and (LS01[x]+LS02[x]+LS03[x]+LS04[x]+LS05[x]+LS06[x] > 0):
+#        T[x]=3    
+#    if (LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x] == 0) and (LB06[x] == 1) and (LS01[x]+LS02[x]+LS03[x]+LS04[x]+LS05[x]+LS06[x] == 0):
+#        T[x]=2    
+#    if (LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x]+LB06[x] == 0) and (LS01[x]+LS02[x]+LS03[x]+LS04[x]+LS05[x]+LS06[x] > 1):
+#        T[x]=2    
+#    if (LB01[x]+LB02[x]+LB03[x]+LB04[x]+LB05[x]+LB06[x] == 0) and (LS01[x]+LS02[x]+LS03[x]+LS04[x]+LS05[x]+LS06[x] == 1):
+#        T[x]=1    
+#    
+      
 
 
 

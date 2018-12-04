@@ -36,7 +36,7 @@ for x in range(first,last):
 
 #%% save data
      
-np.savetxt("/Users/william/Documents/scanner/all_stations/num_active_stations.csv", num_active,delimiter=",",header="day,num_active,lb_num_active,ls_num_active,LB01,LB02,LB03,LB04,LB05,LB06,LS01,LS02,LS03,LS04,LS05,LS06")
+#np.savetxt("/Users/william/Documents/scanner/all_stations/num_active_stations_b.csv", num_active,delimiter=",",header="day,num_active,lb_num_active,ls_num_active,LB01,LB02,LB03,LB04,LB05,LB06,LS01,LS02,LS03,LS04,LS05,LS06")
 
 #%% plot data
 plt.figure(1)

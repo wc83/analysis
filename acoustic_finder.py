@@ -25,15 +25,15 @@ from obspy import UTCDateTime
 from obspy import Stream
 
 
-cat= genfromtxt("/Users/william/Documents/scanner/all_stations/Explosion_catalogue_v2.csv", delimiter=',',skip_header=1)
+cat= genfromtxt("/Users/william/Documents/scanner/all_stations/Explosion_Catalogue_V3.csv", delimiter=',',skip_header=1)
 
 
 ###########  ADD IN CALIBRATIONS ##############
 
-LB01sc1=0.000001/750            # before 2015-12-05T00:00:01.000000Z  
-
-LB01ac = 0.000001/0.0250
-LB03ac = 0.000001/(0.0250*256)
+#LB01sc1=0.000001/750            # before 2015-12-05T00:00:01.000000Z  
+#
+#LB01ac = 0.000001/0.0250
+#LB03ac = 0.000001/(0.0250*256)
 
 
 #for x in range(0,len(cat)) : 
@@ -60,7 +60,7 @@ for x in range(0,10) :
         st.filter(type='bandpass',freqmin=0.3, freqmax=15)
         st.detrend(type='linear')
         st.detrend(type='demean')
-        st[0].data=st[0].data*LB01sc1
+#        st[0].data=st[0].data*LB01sc1
         st.plot(color='r',starttime=t1+20, endtime=t2)
         
         #peak,cf,bwid50,bwid25=freq_info(st[0].data,t1,t2)
@@ -93,7 +93,7 @@ for x in range(0,10) :
         st.filter(type='bandpass',freqmin=0.3, freqmax=15)
         st.detrend(type='linear')
         st.detrend(type='demean')
-        st[0].data=st[0].data*LB01ac
+#        st[0].data=st[0].data*LB01ac
         st.plot(color='b',starttime=t1+20, endtime=t2)
         
         #peak,cf,bwid50,bwid25=freq_info(st[0].data,t1,t2)
@@ -124,7 +124,7 @@ for x in range(0,10) :
         st.filter(type='bandpass',freqmin=0.3, freqmax=15)
         st.detrend(type='linear')
         st.detrend(type='demean')
-        st[0].data=st[0].data*LB03ac
+#        st[0].data=st[0].data*LB03ac
         st.plot(color='g',starttime=t1+20, endtime=t2)
         
         #peak,cf,bwid50,bwid25=freq_info(st[0].data,t1,t2)

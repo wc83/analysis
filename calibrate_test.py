@@ -27,7 +27,7 @@ loc = ''    # location, it depends mostly of which network you are in.
 # t1. and t2 are in hours:minutes:seconds
 # Get data from (Liverpool Winston default) wave server between times t1 and t2 for all stations in stalist      
 client = Client('138.253.113.19', 16022) # ip, port - ip's 138.253.113.19 or 138.253.112.23
-t1 = UTCDateTime(2014, 11, 24 ,5 ,40, 0) #the format is year:day_of_the_year:month
+t1 = UTCDateTime(2017, 3, 21 ,9 ,37, 0) #the format is year:day_of_the_year:month
 t2 = t1 + 3*60
 st = Stream()
 st = client.get_waveforms(net, sta, '', cha, t1 , t2)
@@ -36,7 +36,7 @@ st = client.get_waveforms(net, sta, '', cha, t1 , t2)
 st.filter(type='bandpass',freqmin=0.5, freqmax=15)
 st.detrend(type='linear')
 st.detrend(type='demean')
-st.plot(color='b',starttime=t1+20, endtime=t2)
+#st.plot(color='b',starttime=t1+20, endtime=t2)
 
 #peak,cf,bwid50,bwid25=freq_info(st[0].data,t1,t2)
 #print(peak,cf,bwid50)

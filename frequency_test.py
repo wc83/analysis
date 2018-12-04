@@ -172,7 +172,7 @@ week =0
 weekly_freq_p=np.zeros(shape=(0,6))
 aw=0
        
-with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as fh:
+with io.open("/Users/william/Documents/scanner/output_data/m30.mseed", "rb") as fh:
         # just month 2
 #with io.open("/Users/william/Documents/scanner/output_data/EXP_all_data_stream_2_month_1.mseed", "rb") as fh:
     while True:
@@ -188,7 +188,7 @@ with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as 
         # For each chunck of time, do analysis
 #        print(st)
         for x in range (0,int(len(st))):
-            if st[x].stats.station == "LB01":# or "LB02" or "LB03" or "LB04" or "LB05" or "LB06" :
+            if st[x].stats.station == "LS01":# or "LB02" or "LB03" or "LB04" or "LB05" or "LB06" :
                 if week_start < st[x].stats.starttime.timestamp < week_end:
                     
                     t1 = st[x].stats.starttime
@@ -322,7 +322,7 @@ with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as 
                             sum_eb2 += pe2hz
                             break
 
-#np.savetxt("/Users/william/Documents/scanner/analysis/weekly_LB_freq_amp_energy.csv", weekly_freq_p,delimiter=",",header="Week,AB1,AB2,EB1,EB2,time")
+np.savetxt("/Users/william/Documents/scanner/analysis/weekly_LS01_freq_amp_energy_v3.csv", weekly_freq_p,delimiter=",",header="Week,AB1,AB2,EB1,EB2,time")
 
 
 #
@@ -360,7 +360,7 @@ week =0
 weekly_freq_p=np.zeros(shape=(0,6))
 aw=0
        
-with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as fh:
+with io.open("/Users/william/Documents/scanner/output_data/m30.mseed", "rb") as fh:
         # just month 2
 #with io.open("/Users/william/Documents/scanner/output_data/EXP_all_data_stream_2_month_1.mseed", "rb") as fh:
     while True:
@@ -376,7 +376,7 @@ with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as 
         # For each chunck of time, do analysis
 #        print(st)
         for x in range (0,int(len(st))):
-            if st[x].stats.station == "LB02": #or "LB02" or "LB03" or "LB04" or "LB05" or "LB06" :
+            if st[x].stats.station == "LS02": #or "LB02" or "LB03" or "LB04" or "LB05" or "LB06" :
                 if week_start < st[x].stats.starttime.timestamp < week_end:
                     
                     t1 = st[x].stats.starttime
@@ -509,7 +509,7 @@ with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as 
                             sum_eb2 += pe2hz
                             break
 
-#np.savetxt("/Users/william/Documents/scanner/analysis/weekly_LB02_freq_amp_energy.csv", weekly_freq_p,delimiter=",",header="Week,AB1,AB2,EB1,EB2,time")
+np.savetxt("/Users/william/Documents/scanner/analysis/weekly_LS02_freq_amp_energy_v3.csv", weekly_freq_p,delimiter=",",header="Week,AB1,AB2,EB1,EB2,time")
 #
 plt.figure(11)
 plt.plot(weekly_freq_p[:,0],weekly_freq_p[:,2],'bx')
@@ -531,7 +531,7 @@ week =0
 weekly_freq_p=np.zeros(shape=(0,6))
 aw=0
        
-with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as fh:
+with io.open("/Users/william/Documents/scanner/output_data/m30.mseed", "rb") as fh:
         # just month 2
 #with io.open("/Users/william/Documents/scanner/output_data/EXP_all_data_stream_2_month_1.mseed", "rb") as fh:
     while True:
@@ -547,7 +547,7 @@ with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as 
         # For each chunck of time, do analysis
 #        print(st)
         for x in range (0,int(len(st))):
-            if st[x].stats.station == "LB03": #or "LB02" or "LB03" or "LB04" or "LB05" or "LB06" :
+            if st[x].stats.station == "LS03": #or "LB02" or "LB03" or "LB04" or "LB05" or "LB06" :
                 if week_start < st[x].stats.starttime.timestamp < week_end:
                     
                     t1 = st[x].stats.starttime
@@ -680,7 +680,7 @@ with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as 
                             sum_eb2 += pe2hz
                             break
 
-#np.savetxt("/Users/william/Documents/scanner/analysis/weekly_LB03_freq_amp_energy.csv", weekly_freq_p,delimiter=",",header="Week,AB1,AB2,EB1,EB2,time")
+np.savetxt("/Users/william/Documents/scanner/analysis/weekly_LS03_freq_amp_energy_v3.csv", weekly_freq_p,delimiter=",",header="Week,AB1,AB2,EB1,EB2,time")
 
 plt.figure(11)
 plt.plot(weekly_freq_p[:,0],weekly_freq_p[:,2],'kx')
@@ -704,7 +704,7 @@ week =0
 weekly_freq_p=np.zeros(shape=(0,6))
 aw=0
        
-with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as fh:
+with io.open("/Users/william/Documents/scanner/output_data/m30.mseed", "rb") as fh:
         # just month 2
 #with io.open("/Users/william/Documents/scanner/output_data/EXP_all_data_stream_2_month_1.mseed", "rb") as fh:
     while True:
@@ -720,7 +720,7 @@ with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as 
         # For each chunck of time, do analysis
 #        print(st)
         for x in range (0,int(len(st))):
-            if st[x].stats.station == "LB04": #or "LB02" or "LB03" or "LB04" or "LB05" or "LB06" :
+            if st[x].stats.station == "LS04": #or "LB02" or "LB03" or "LB04" or "LB05" or "LB06" :
                 if week_start < st[x].stats.starttime.timestamp < week_end:
                     
                     t1 = st[x].stats.starttime
@@ -853,7 +853,7 @@ with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as 
                             sum_eb2 += pe2hz
                             break
 
-#np.savetxt("/Users/william/Documents/scanner/analysis/weekly_LB04_freq_amp_energy.csv", weekly_freq_p,delimiter=",",header="Week,AB1,AB2,EB1,EB2,time")
+np.savetxt("/Users/william/Documents/scanner/analysis/weekly_LS04_freq_amp_energy_v3.csv", weekly_freq_p,delimiter=",",header="Week,AB1,AB2,EB1,EB2,time")
 #
 plt.figure(11)
 plt.plot(weekly_freq_p[:,0],weekly_freq_p[:,2],'cx')
@@ -877,7 +877,7 @@ week =0
 weekly_freq_p=np.zeros(shape=(0,6))
 aw=0
        
-with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as fh:
+with io.open("/Users/william/Documents/scanner/output_data/m30.mseed", "rb") as fh:
         # just month 2
 #with io.open("/Users/william/Documents/scanner/output_data/EXP_all_data_stream_2_month_1.mseed", "rb") as fh:
     while True:
@@ -893,7 +893,7 @@ with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as 
         # For each chunck of time, do analysis
 #        print(st)
         for x in range (0,int(len(st))):
-            if st[x].stats.station == "LB05": #or "LB02" or "LB03" or "LB04" or "LB05" or "LB06" :
+            if st[x].stats.station == "LS05": #or "LB02" or "LB03" or "LB04" or "LB05" or "LB06" :
                 if week_start < st[x].stats.starttime.timestamp < week_end:
                     
                     t1 = st[x].stats.starttime
@@ -1026,7 +1026,7 @@ with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as 
                             sum_eb2 += pe2hz
                             break
 
-#np.savetxt("/Users/william/Documents/scanner/analysis/weekly_LB05_freq_amp_energy.csv", weekly_freq_p,delimiter=",",header="Week,AB1,AB2,EB1,EB2,time")
+np.savetxt("/Users/william/Documents/scanner/analysis/weekly_LS05_freq_amp_energy_v3.csv", weekly_freq_p,delimiter=",",header="Week,AB1,AB2,EB1,EB2,time")
 #
 plt.figure(11)
 plt.plot(weekly_freq_p[:,0],weekly_freq_p[:,2],'yx')
@@ -1049,7 +1049,7 @@ week =0
 weekly_freq_p=np.zeros(shape=(0,6))
 aw=0
        
-with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as fh:
+with io.open("/Users/william/Documents/scanner/output_data/m30.mseed", "rb") as fh:
         # just month 2
 #with io.open("/Users/william/Documents/scanner/output_data/EXP_all_data_stream_2_month_1.mseed", "rb") as fh:
     while True:
@@ -1065,7 +1065,7 @@ with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as 
         # For each chunck of time, do analysis
 #        print(st)
         for x in range (0,int(len(st))):
-            if st[x].stats.station == "LB06": #or "LB02" or "LB03" or "LB04" or "LB05" or "LB06" :
+            if st[x].stats.station == "LS06": #or "LB02" or "LB03" or "LB04" or "LB05" or "LB06" :
                 if week_start < st[x].stats.starttime.timestamp < week_end:
                     
                     t1 = st[x].stats.starttime
@@ -1198,14 +1198,14 @@ with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as 
                             sum_eb2 += pe2hz
                             break
 
-#np.savetxt("/Users/william/Documents/scanner/analysis/weekly_LB06_freq_amp_energy.csv", weekly_freq_p,delimiter=",",header="Week,AB1,AB2,EB1,EB2,time")
+np.savetxt("/Users/william/Documents/scanner/analysis/weekly_LS06_freq_amp_energy_v3.csv", weekly_freq_p,delimiter=",",header="Week,AB1,AB2,EB1,EB2,time")
 #
 plt.figure(11)
 plt.plot(weekly_freq_p[:,0],weekly_freq_p[:,2],'gx')
-plt.legend(('LB01','LB02','LB03','LB04','LB05','LB06'))
+plt.legend(('LS01','LS02','LS03','LS04','LS05','LS06'))
 plt.figure(12)
 plt.plot(weekly_freq_p[:,0],weekly_freq_p[:,4],'gx')
-plt.legend(('LB01','LB02','LB03','LB04','LB05','LB06'))
+plt.legend(('LS01','LS02','LS03','LS04','LS05','LS06'))
 
 
 
