@@ -39,6 +39,9 @@ p_tot=1
 s_tot=0
 
 event_num=1
+
+sec=np.zeros(shape=(0,3))
+num=0
 #%%
 #for x in range(1,5000):
 for x in range(1,len(cat)):
@@ -46,6 +49,9 @@ for x in range(1,len(cat)):
         pands[event_num,0]=cat[x,0]
         
         if cat[x,0] - last_p < 10*60:
+            sec = np.lib.pad(sec, ((0,1),(0,0)), 'constant', constant_values=(0))
+            sec[num][0]= last_p
+            sec[num][1]= cat[x,0]
             
 #%%
             if cat[x,10]==1:
@@ -759,6 +765,7 @@ for x in range(1,len(cat)):
 #                        last_p=cat[x,0]
 #                        p_tot +=1
                         larger_s_tot += 1
+            num +=1
 #%%
             
         else:

@@ -41,8 +41,8 @@ rs5=1100
 rs6=7510
 
 
-sso=330
-sse = 500
+sso=340
+sse = 450
 sott=r1/sso
 sett=rs1/sse
 extd = sott-sett
@@ -59,13 +59,14 @@ client = Client('138.253.113.19', 16022) # ip, port - ip's 138.253.113.19 or 138
 
 cat= genfromtxt("/Users/william/Documents/scanner/all_stations/Explosion_Catalogue_V4c.csv", delimiter=',',skip_header=1)
 
+#%%
 
 for x in range(0,len(cat)):
 #for x in range(0,500):    
     try:
         event=cat[x,0]
         
-    
+        # find acoustic signal
         cha = 'HDF' # CHANNEL
         t1 = UTCDateTime(event) 
         t2 = t1 + 40
@@ -86,6 +87,7 @@ for x in range(0,len(cat)):
     
         on_off = trigger_onset(cft,trig_on,trig_off)
         
+        # find associated seismic signal if acoustic is found
         if len(on_off) > 0:
             start1=(on_off[0])/100
             start=start1[1]
@@ -114,7 +116,7 @@ for x in range(0,len(cat)):
         
             on_off2 = trigger_onset(cft,trig_on,trig_off)
             
-            if len(on_off) > 0:
+            if len(on_off2) > 0:
                 start2=(on_off2[0])/100
                 start_s=start2[1]
                 arrival_s = t1 + start_s
@@ -125,7 +127,7 @@ for x in range(0,len(cat)):
                 
 #                print(diff)
                 
-                if 2 < diff < 15:
+                if 0.5 < diff < 15:
                     td = np.lib.pad(td, ((0,1),(0,0)), 'constant', constant_values=(0))
                             
                     td[num][0]=arrival_s
@@ -138,66 +140,83 @@ for x in range(0,len(cat)):
     except:
         p=1
         
-
+#%%
 
 
 plt.figure(1)
-plt.plot(td[:,2])
-plt.title('arrival difference')
+plt.plot(td[1500:2249,0],td[1500:2249,2],'bx-')
+plt.title('arrival difference - no smoothing')
+plt.ylim([0,15])
+#plt.figure(2)
+#plt.plot(td[:,3])
+#plt.title('source difference')
 
-plt.figure(2)
-plt.plot(td[:,3])
-plt.title('source difference')
-#%%
 numb=0
-tds=np.zeros(shape=(0,2))
+tds=np.zeros(shape=(0,3))
+for q in range(0,len(td)-10):
+    tds = np.lib.pad(tds, ((0,1),(0,0)), 'constant', constant_values=(0))
+    
+    smoothed=sum(td[q:q+10,2])/10 
+    smoothed2=sum(td[q:q+10,3])/10  
+    tds[numb][0]=td[q+5,0]          
+    tds[numb][1]=smoothed
+    tds[numb][2]=smoothed2
+    numb+=1
+
+plt.figure(3)
+plt.plot(tds[1500:2249,0],tds[1500:2249,1],'bx-')
+plt.title('smoothed arrival difference - 10 smoothed')
+plt.ylim([4,8])
+#np.savetxt("/Users/william/Documents/scanner/analysis/acoustic_delay_10_smoothed_LB01.csv", tds,delimiter=",",header="seismic_arrival,smoothed_time,smoothed_expected_arrival")
+
+numb=0
+tds=np.zeros(shape=(0,3))
 for q in range(0,len(td)-20):
     tds = np.lib.pad(tds, ((0,1),(0,0)), 'constant', constant_values=(0))
     
-    smoothed=sum(td[q:q+20,2])/20  
-    tds[numb][1]=td[q+10,0]          
-    tds[numb][0]=smoothed
+    smoothed=sum(td[q:q+20,2])/20 
+    smoothed2=sum(td[q:q+20,3])/20  
+    tds[numb][0]=td[q+10,0]          
+    tds[numb][1]=smoothed
+    tds[numb][2]=smoothed2
     numb+=1
     
     
-numb2=0   
-tds2=np.zeros(shape=(0,2))
-for q in range(0,len(td)-20):
-    tds2 = np.lib.pad(tds2, ((0,1),(0,0)), 'constant', constant_values=(0))
     
-    smoothed2=sum(td[q:q+20,3])/20  
-    tds2[numb2][1]=td[q+10,0]          
-    tds2[numb2][0]=smoothed2
-    numb2+=1
-    
-plt.figure(3)
-plt.plot(tds[:,0])
-plt.title('smoothed arrival difference')
+plt.figure(5)
+plt.plot(tds[1500:2249,0],tds[1500:2249,1],'bx-')
+plt.title('smoothed arrival difference - 20 smoothed')
+plt.ylim([4,8])
+
+
+#plt.figure(4)
+#plt.plot(tds[:,2])
+#plt.title('smoothed source difference')
 #plt.ylim([0,10])
 
-plt.figure(4)
-plt.plot(tds2[:,0])
-plt.title('smoothed source difference')
-#plt.ylim([0,10])
-
-#np.savetxt("/Users/william/Documents/scanner/analysis/acoustic_delay_LB01.csv", td,delimiter=",",header="seismic_time,Acoustic_time,time_delay,adjusted_delay")
-#np.savetxt("/Users/william/Documents/scanner/analysis/acoustic_delay_smoothed_LB01.csv", tds,delimiter=",",header="smoothed_time,seismic_arrival")
+#np.savetxt("/Users/william/Documents/scanner/analysis/acoustic_delay_LB05.csv", td,delimiter=",",header="seismic_time,Acoustic_time,time_delay,adjusted_delay")
+#np.savetxt("/Users/william/Documents/scanner/analysis/acoustic_delay_20_smoothed_LB01.csv", tds,delimiter=",",header="seismic_arrival,smoothed_time,smoothed_expected_arrival")
 
 
 
+numb=0
+tds=np.zeros(shape=(0,3))
+for q in range(0,len(td)-50):
+    tds = np.lib.pad(tds, ((0,1),(0,0)), 'constant', constant_values=(0))
+    
+    smoothed=sum(td[q:q+50,2])/50 
+    smoothed2=sum(td[q:q+50,3])/50  
+    tds[numb][0]=td[q+25,0]          
+    tds[numb][1]=smoothed
+    tds[numb][2]=smoothed2
+    numb+=1
 
 
-
-
-
-
-
-
-
-
-
-
-
+plt.figure(7)
+plt.plot(tds[1500:2249,0],tds[1500:2249,1],'bx-')
+plt.title('smoothed arrival difference - 50 smoothed')
+plt.ylim([4,8])
+#np.savetxt("/Users/william/Documents/scanner/analysis/acoustic_delay_50_smoothed_LB01.csv", tds,delimiter=",",header="seismic_arrival,smoothed_time,smoothed_expected_arrival")
 
 
 
