@@ -82,10 +82,10 @@ def calibrate1(st):
                 st_c.append(st)
 #                print("seismic lb01 end")
         if st.stats.station == "LB02":
-            if st.stats.starttime.timestamp < 1449273600.0:
+            if st.stats.starttime.timestamp < 1428000000.0:
                 st.data=st.data * LB02c1
                 st_c.append(st)
-            if st.stats.starttime.timestamp > 1449273600.01:
+            if st.stats.starttime.timestamp > 1428000000.01:
                 st.data=st.data * LB02c2
                 st_c.append(st)
         if st.stats.station == "LB03":
