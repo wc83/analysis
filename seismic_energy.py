@@ -75,6 +75,8 @@ with io.open("/Users/william/Documents/scanner/output_data/m32.mseed", "rb") as 
 plt.figure(10) 
 plt.semilogy(Energy[:,0],Energy[:,1],'bx')
 
+plt.figure(100) 
+plt.plot(Energy[:,0],Energy[:,1],'bx')
 ##
 #
 ##%% daily events
@@ -352,7 +354,7 @@ plt.ylim([1e1,1e16])
 #plt.ylim([1e1,1e14])
 
 
-np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LB01_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
+#np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LB01_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
 #%%
 reclen = 512
 chunksize = 100000 * reclen # Around 50 MB
@@ -460,7 +462,7 @@ plt.semilogy(Energy_week[:,0],Energy_week[:,1],'bx')
 plt.figure(30) 
 plt.semilogy(Energy_week[:,0],Energy_week[:,2],'bx')
 
-np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LB02_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
+#np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LB02_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
 #%%
 
 reclen = 512
@@ -570,7 +572,7 @@ plt.figure(30)
 plt.semilogy(Energy_week[:,0],Energy_week[:,2],'kx')
 
 
-np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LB03_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
+#np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LB03_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
 #%%
 
 reclen = 512
@@ -679,7 +681,7 @@ plt.semilogy(Energy_week[:,0],Energy_week[:,1],'mx')
 plt.figure(30) 
 plt.semilogy(Energy_week[:,0],Energy_week[:,2],'mx')
 
-np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LB04_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
+#np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LB04_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
 #%%
 
 reclen = 512
@@ -788,7 +790,7 @@ plt.semilogy(Energy_week[:,0],Energy_week[:,1],'cx')
 plt.figure(30) 
 plt.semilogy(Energy_week[:,0],Energy_week[:,2],'cx')
 
-np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LB05_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
+#np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LB05_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
 #%%
 
 reclen = 512
@@ -899,7 +901,7 @@ plt.semilogy(Energy_week[:,0],Energy_week[:,2],'gx')
 #plt.legend(('LB01','LB02','LB03','LB04','LB05','LB06'))
 
 
-np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LB06_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
+#np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LB06_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
 
 
 
@@ -1045,7 +1047,7 @@ plt.semilogy(Energy_week[:,0],Energy_week[:,2],'r+')
 #plt.ylabel('Energy')
 #plt.ylim([1e1,1e14])
 
-np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LS01_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
+#np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LS01_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
 #%%
 reclen = 512
 chunksize = 100000 * reclen # Around 50 MB
@@ -1152,7 +1154,7 @@ plt.semilogy(Energy_week[:,0],Energy_week[:,1],'b+')
 
 plt.figure(30) 
 plt.semilogy(Energy_week[:,0],Energy_week[:,2],'b+')
-np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LS02_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
+#np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LS02_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
 #%%
 
 reclen = 512
@@ -1261,7 +1263,7 @@ plt.semilogy(Energy_week[:,0],Energy_week[:,1],'k+')
 plt.figure(30) 
 plt.semilogy(Energy_week[:,0],Energy_week[:,2],'k+')
 
-np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LS03_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
+#np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LS03_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
 #%%
 
 reclen = 512
@@ -1363,7 +1365,7 @@ with io.open("/Users/william/Documents/scanner/output_data/m30.mseed", "rb") as 
                                 sum_EE += EE
                                 break  
 
-np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LS04_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
+#np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LS04_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
                 
 plt.figure(20)                                   
 plt.semilogy(Energy_week[:,0],Energy_week[:,1],'m+')
@@ -1472,7 +1474,7 @@ with io.open("/Users/william/Documents/scanner/output_data/m30.mseed", "rb") as 
                                 sum_EE += EE
                                 break  
                             
-np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LS05_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
+#np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LS05_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")  
                 
 plt.figure(20)                                   
 plt.semilogy(Energy_week[:,0],Energy_week[:,1],'c+')
@@ -1582,7 +1584,7 @@ with io.open("/Users/william/Documents/scanner/output_data/m30.mseed", "rb") as 
                                 break  
 
 
-np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LS06_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")                   
+#np.savetxt("/Users/william/Documents/scanner/analysis/Event_energy_LS06_2.csv", Energy_week,delimiter=",",header="Week,Total_E,Average_E, Time,Events ")                   
 
                 
 plt.figure(20)                                   
