@@ -9,7 +9,7 @@ Created on Mon Aug 13 16:24:31 2018
 # need to produce stream for returned trace
 from obspy import Stream
 
-def calibrate1(st):
+def calibrate1(st1):
 
     #%%   LB Seismic calibration factors
     
@@ -23,6 +23,7 @@ def calibrate1(st):
     LB02c2=1.33e-9/256
     
     LB03c=1.33e-9/256
+    LB03c2=1.33e-9
     LB04c=1.33e-9/256
     LB05c=1.33e-9/256
     LB06c=3.25e-9
@@ -63,82 +64,90 @@ def calibrate1(st):
     st_c=Stream()
     
     #%% Seismic Calibrations
-    
-    if st.stats.channel == "HHZ":
-        if st.stats.station == "LB01":
-            if st.stats.starttime.timestamp < 1449273600.0:
-                st.data=st.data * LB01c1
-                st_c.append(st)
+#    print(st1.stats.station)
+    if st1.stats.channel == "HHZ":
+        if st1.stats.station == "LB01":
+            if st1.stats.starttime.timestamp < 1449273600.0:
+                st1.data=st1.data * LB01c1
+                st_c.append(st1)
 #                print("seismic lb01 start")
-            if 1449273600.01 < st.stats.starttime.timestamp < 1458086400.0:
-                st.data=st.data * LB01c2
-                st_c.append(st)
+            if 1449273600.01 < st1.stats.starttime.timestamp < 1458086400.0:
+                st1.data=st1.data * LB01c2
+                st_c.append(st1)
 #                print("seismic lb01 mid")
-            if 1458086400.01 < st.stats.starttime.timestamp < 1465948800.0:
-                st.data=st.data * LB01c3
-                st_c.append(st)
-            if 1465948800.01 < st.stats.starttime.timestamp:
-                st.data=st.data * LB01c4
-                st_c.append(st)
+            if 1458086400.01 < st1.stats.starttime.timestamp < 1465948800.0:
+                st1.data=st1.data * LB01c3
+                st_c.append(st1)
+#                print("seismic lb01 mid2")
+            if 1465948800.01 < st1.stats.starttime.timestamp:
+                st1.data=st1.data * LB01c4
+                st_c.append(st1)
 #                print("seismic lb01 end")
-        if st.stats.station == "LB02":
-            if st.stats.starttime.timestamp < 1428000000.0:
-                st.data=st.data * LB02c1
-                st_c.append(st)
-            if st.stats.starttime.timestamp > 1428000000.01:
-                st.data=st.data * LB02c2
-                st_c.append(st)
-        if st.stats.station == "LB03":
-            st.data=st.data * LB03c
-            st_c.append(st)
-#            print("seismic lb03")
-        if st.stats.station == "LB04":
-            st.data=st.data * LB04c
-            st_c.append(st)
+        if st1.stats.station == "LB02":
+            if st1.stats.starttime.timestamp < 1428000000.0:
+                st1.data=st1.data * LB02c1
+                st_c.append(st1)
+#                print("seismic lb02 start")
+            if st1.stats.starttime.timestamp > 1428000000.01:
+                st1.data=st1.data * LB02c2
+                st_c.append(st1)
+#                print("seismic lb02 end")
+        if st1.stats.station == "LB03" or st1.stats.station == "STG8":
+            if st1.stats.starttime.timestamp < 1514764800.0:
+                st1.data=st1.data * LB03c
+                st_c.append(st1)
+#                print("seismic lb03")
+            if st1.stats.starttime.timestamp > 1514764800.01:
+                st1.data=st1.data * LB03c2
+                st_c.append(st1)
+#                print("seismic lSTG8")
+        if st1.stats.station == "LB04":
+            st1.data=st1.data * LB04c
+            st_c.append(st1)
 #            print("seismic lb04")
-        if st.stats.station == "LB05":
-            st.data=st.data * LB05c
-            st_c.append(st)
+        if st1.stats.station == "LB05":
+            st1.data=st1.data * LB05c
+            st_c.append(st1)
 #            print("seismic lb05")
-        if st.stats.station == "LB06":
-            st.data=st.data * LB06c
-            st_c.append(st)
+        if st1.stats.station == "LB06":
+            st1.data=st1.data * LB06c
+            st_c.append(st1)
 #            print("seismic lb06")
-    if st.stats.channel == "EHZ":
-        if st.stats.station == "LS01" or "LS02" or "LS03" or "LS04" or "LS05" or "LS06":
-            st.data=st.data * LSsc
-            st_c.append(st) 
+    if st1.stats.channel == "EHZ":
+        if st1.stats.station == "LS01" or st1.stats.station =="LS02" or st1.stats.station =="LS03" or st1.stats.station =="LS04" or st1.stats.station =="LS05" or st1.stats.station =="LS06":
+            st1.data=st1.data * LSsc
+            st_c.append(st1) 
 #            print("seismic lS")
             
        #%% Acoustic Calibrations
-    if st.stats.channel == "HDF" :
-        if st.stats.station == "LB01":
-            st.data=st.data * LB01ac
-            st_c.append(st)
+    if st1.stats.channel == "HDF" :
+        if st1.stats.station == "LB01":
+            st1.data=st1.data * LB01ac
+            st_c.append(st1)
 #            print("acoustic lb01")
-        if st.stats.station == "LB02":
-            st.data=st.data * LB02ac
-            st_c.append(st)
+        if st1.stats.station == "LB02":
+            st1.data=st1.data * LB02ac
+            st_c.append(st1)
 #            print("acoustic lb02")
-        if st.stats.station == "LB03":
-            st.data=st.data * LB03ac
-            st_c.append(st)
+        if st1.stats.station == "LB03":
+            st1.data=st1.data * LB03ac
+            st_c.append(st1)
 #            print("acoustic lb03")
-        if st.stats.station == "LB04":
-            st.data=st.data * LB04ac
-            st_c.append(st)
+        if st1.stats.station == "LB04":
+            st1.data=st1.data * LB04ac
+            st_c.append(st1)
 #            print("acoustic lb04")
-        if st.stats.station == "LB05":
-            st.data=st.data * LB05ac
-            st_c.append(st)
+        if st1.stats.station == "LB05":
+            st1.data=st1.data * LB05ac
+            st_c.append(st1)
 #            print("acoustic lb05")
-        if st.stats.station == "LB06":
-            st.data=st.data * LB06ac
-            st_c.append(st)
+        if st1.stats.station == "LB06":
+            st1.data=st1.data * LB06ac
+            st_c.append(st1)
 #            print("acoustic lb06")
-        if st.stats.station == "LS01":
-            st.data=st.data * LS01ac
-            st_c.append(st)
+        if st1.stats.station == "LS01":
+            st1.data=st1.data * LS01ac
+            st_c.append(st1)
 #            print("acoustic ls01")
 #    #
     return(st_c)

@@ -11,11 +11,11 @@ from obspy.taup import TauPyModel
 import matplotlib.pyplot as plt
 
 
-#18.824°N 106.934
+#32.718°S 67.123°W
 # Location of EQ source
-lat1=7.940            #Latitude positive in north
-lon1=-82.686     #Longitude positive to East
-depth=20
+lat1=-32.7          #Latitude positive in north  
+lon1=-67.1 #Longitude positive to East
+depth=172
 # Location of Santiaguito
 lat2=14.74                      #Latitude positive in north
 lon2=-91.566                    #Longitude positive to East

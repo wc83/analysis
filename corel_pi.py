@@ -13,9 +13,7 @@ def corel_pi(wav1,wav2,shift):
 
     corell=correlate(wav1, wav2, shift, demean=True,normalize='naive',domain='time' )
     top=corell.argmax()
-    bot=corell.argmin()
     top_v = corell[top]
-    bot_v = corell[bot] 
     top = (shift)-top
 
 
