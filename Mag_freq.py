@@ -84,6 +84,7 @@ print('Energy from', Emin, 'to', Emax)
     
 # 10000000000
 
+#%%
 
 plt.figure(4001)
 plt.hist(Energy[:,1],bins=30, histtype='step')
@@ -92,7 +93,7 @@ plt.xscale('log')
 plt.xlim([1e5,1e9])
 plt.xlabel('Energy')
 plt.ylabel('Occurance [#]')
-plt.title('Mag-Freq: Power-law Relationship')
+#plt.title('Mag-Freq: Power-law Relationship')
 
             
             
